@@ -31,8 +31,8 @@ export default function EventDetailPage() {
         <div className="absolute inset-0 bg-black/40" />
         
         {/* Top Navbar over hero */}
-        <div className="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-10">
-          <Link href="/search" className="flex items-center gap-2 text-white hover:text-white/80 transition-colors">
+        <div className="absolute top-20 left-0 w-full px-6 flex justify-between items-center z-10">
+          <Link href="/search" className="flex items-center gap-2 text-white hover:text-[var(--accent)] transition-colors drop-shadow-md">
             <ArrowLeft className="w-5 h-5" />
             <span className="font-bold">Volver a eventos</span>
           </Link>

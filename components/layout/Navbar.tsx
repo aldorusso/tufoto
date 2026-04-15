@@ -35,9 +35,9 @@ export function Navbar() {
       <motion.header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          background: scrolled ? 'var(--bg-glass)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+          background: scrolled ? 'var(--bg-glass)' : 'var(--bg-primary)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
           borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
         }}
         initial={{ y: -80 }}

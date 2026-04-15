@@ -47,45 +47,29 @@ export function Footer() {
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--accent)' }}>
                   <Camera className="w-4 h-4" style={{ color: 'var(--bg-primary)' }} />
                 </div>
-                <span className="text-xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: 'var(--fg-primary)' }}>
-                  Photo<span style={{ color: 'var(--accent)' }}>Vault</span>
+                <span className="text-xl font-bold tracking-tight" style={{ color: 'var(--fg-primary)' }}>
+                  tu<span style={{ color: 'var(--accent)' }}>foto</span>.net
                 </span>
               </Link>
               <p className="text-sm leading-relaxed mb-8 max-w-xs" style={{ color: 'var(--fg-secondary)' }}>
                 La plataforma de referencia para adquirir fotografías profesionales de bodas, festivales y eventos deportivos.
               </p>
 
-              {/* Newsletter */}
+              {/* Contact Info */}
               <div>
                 <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: 'var(--accent)' }}>
-                  Newsletter
+                  Contacto Directo
                 </p>
-                <form action={subscribeNewsletter} className="flex gap-2">
-                  <div className="relative flex-1">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--fg-muted)' }} />
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="tu@email.com"
-                      required
-                      className="w-full pl-9 pr-3 py-2.5 text-sm rounded-xl outline-none transition-colors"
-                      style={{
-                        background: 'var(--bg-tertiary)',
-                        border: '1px solid var(--border)',
-                        color: 'var(--fg-primary)',
-                      }}
-                    />
-                  </div>
-                  <motion.button
-                    type="submit"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="px-4 py-2.5 rounded-xl text-sm font-medium flex items-center gap-1.5 transition-colors"
-                    style={{ background: 'var(--accent)', color: 'var(--bg-primary)' }}
-                  >
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.button>
-                </form>
+                <div className="flex flex-col gap-2">
+                  <a href="mailto:hola@tufoto.net" className="flex items-center gap-2 text-sm transition-colors hover:text-[var(--accent)]" style={{ color: 'var(--fg-secondary)' }}>
+                    <Mail className="w-4 h-4" />
+                    hola@tufoto.net
+                  </a>
+                  <a href="tel:+34900000000" className="flex items-center gap-2 text-sm transition-colors hover:text-[var(--accent)]" style={{ color: 'var(--fg-secondary)' }}>
+                    <MessageCircle className="w-4 h-4" />
+                    +34 900 000 000
+                  </a>
+                </div>
               </div>
             </ScrollReveal>
           </div>

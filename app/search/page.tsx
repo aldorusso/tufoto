@@ -18,36 +18,74 @@ export default function SearchPage() {
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full">
         
-        {/* Header & Filter Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-12 border-b pb-8" style={{ borderColor: 'var(--border)' }}>
-          <div className="w-full md:w-1/2">
-            <h1 className="text-4xl font-bold tracking-tight mb-4" style={{ color: 'var(--fg-primary)' }}>
-              Explorar Eventos
-            </h1>
-            <p className="text-base" style={{ color: 'var(--fg-secondary)' }}>
-              Busca tu carrera, triatlón o festival. Encuentra tus fotos en segundos.
-            </p>
-          </div>
-          
-          <div className="w-full md:w-1/2 flex justify-end">
-            <div 
-              className="flex items-center w-full max-w-md px-4 py-3 rounded-full border shadow-sm transition-shadow focus-within:shadow-md"
-              style={{ background: 'var(--bg-card)', borderColor: 'var(--border)' }}
-            >
-              <Search className="w-5 h-5 flex-shrink-0 mr-3" style={{ color: 'var(--fg-muted)' }} />
-              <input 
-                type="text" 
-                placeholder="Buscar por nombre o ciudad..."
-                className="w-full bg-transparent border-none outline-none text-sm font-medium"
-                style={{ color: 'var(--fg-primary)' }}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-          </div>
+        {/* Massive Search Hero */}
+        <div className="w-full bg-[var(--bg-card)] border-b border-[var(--border)] pt-20 pb-24 px-4 sm:px-6 relative overflow-hidden flex flex-col items-center justify-center min-h-[40vh]">
+           {/* Decorative background blur */}
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-[var(--accent)] opacity-[0.03] blur-[100px] rounded-full pointer-events-none" />
+           
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.5 }}
+             className="relative z-10 w-full max-w-3xl mx-auto text-center"
+           >
+             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4" style={{ color: 'var(--fg-primary)' }}>
+               Encuentra tu evento
+             </h1>
+             <p className="text-lg mb-10" style={{ color: 'var(--fg-secondary)' }}>
+               Busca tu carrera, triatlón o festival corporativo en milisegundos.
+             </p>
+             
+             {/* Prominent Search Bar */}
+             <div 
+               className="flex items-center w-full bg-[var(--bg-primary)] px-6 py-5 rounded-full border shadow-xl transition-all focus-within:shadow-2xl focus-within:scale-[1.02] focus-within:border-[var(--accent)]"
+               style={{ borderColor: 'var(--border)' }}
+             >
+               <Search className="w-6 h-6 flex-shrink-0 mr-4" style={{ color: 'var(--accent)' }} />
+               <input 
+                 type="text" 
+                 placeholder="Buscar por nombre, deporte o ciudad..."
+                 className="w-full bg-transparent border-none outline-none text-lg md:text-xl font-medium"
+                 style={{ color: 'var(--fg-primary)' }}
+                 value={searchTerm}
+                 onChange={(e) => setSearchTerm(e.target.value)}
+                 autoFocus
+               />
+               
+               {/* Search shortcut hint or button */}
+               <div className="hidden md:flex items-center justify-center px-4 py-2 ml-4 rounded-full bg-[var(--fg-primary)] text-[var(--bg-primary)] font-bold text-sm cursor-pointer hover:scale-105 transition-transform">
+                 Buscar
+               </div>
+             </div>
+             
+             {/* Quick tags */}
+             <div className="mt-8 flex flex-wrap justify-center gap-3">
+                <span className="text-sm font-medium opacity-60">Sugerencias:</span>
+                {['Maratón', 'Madrid', 'Boda', 'Ciclismo'].map(tag => (
+                  <button 
+                    key={tag}
+                    onClick={() => setSearchTerm(tag)}
+                    className="text-sm font-bold px-3 py-1 rounded-full border border-[var(--border)] bg-[var(--bg-primary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+                  >
+                    {tag}
+                  </button>
+                ))}
+             </div>
+           </motion.div>
         </div>
+
+        {/* Results Grid Container */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-xl font-bold" style={{ color: 'var(--fg-primary)' }}>
+              {searchTerm ? `Resultados para "${searchTerm}"` : 'Eventos recientes'}
+            </h2>
+            <span className="text-sm font-medium px-3 py-1 rounded-full bg-[var(--bg-card)] border border-[var(--border)]">
+              {filteredEvents.length} eventos
+            </span>
+          </div>
 
         {/* Results Grid */}
         {filteredEvents.length === 0 ? (
@@ -116,6 +154,7 @@ export default function SearchPage() {
             ))}
           </div>
         )}
+        </div>
       </div>
     </div>
   );
