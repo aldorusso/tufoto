@@ -45,7 +45,7 @@ export default function ForPhotographersPage() {
         />
         
         {/* Soft glowing ambient orb behind text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full z-0" pointer-events="none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[var(--accent)] opacity-[0.04] blur-[120px] rounded-full z-0 pointer-events-none" />
 
         {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
@@ -195,13 +195,20 @@ export default function ForPhotographersPage() {
             style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)' }}
           >
             <div className="text-[var(--accent)] font-bold text-6xl tracking-tighter mb-4">0€</div>
-            <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--fg-primary)' }}>Mantenimiento</h3>
-            <p className="font-medium text-sm mb-6" style={{ color: 'var(--fg-secondary)' }}>Podrás subir y almacenar todas las galerías de eventos que quieras, para siempre.</p>
+            <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--fg-primary)' }}>Mantenimiento Inicial</h3>
+            <p className="font-medium text-sm mb-6" style={{ color: 'var(--fg-secondary)' }}>
+              Cero fricción para empezar. Te regalamos <strong>5GB de almacenamiento ultrarrápido</strong>. Si tu negocio explota y requieres subir terabytes, nuestros planes de expansión mensual son ridículamente accesibles.
+            </p>
             <ul className="space-y-3">
-              {['Almacenamiento Ilimitado', 'Perfiles de fotógrafo', 'Estadísticas de ventas'].map((li, i) =>(
-                <li key={i} className="flex items-center gap-2 text-sm font-bold" style={{ color: 'var(--fg-primary)' }}><CheckCircle2 className="w-4 h-4 text-[var(--accent)]"/> {li}</li>
+              {['5GB Iniciales Totalmente Gratis', 'Amplía tu espacio solo si escalas', 'Perfiles corporativos y Estadísticas'].map((li, i) =>(
+                <li key={i} className="flex items-center gap-2 text-sm font-bold" style={{ color: 'var(--fg-primary)' }}><CheckCircle2 className="w-4 h-4 text-[var(--accent)]"/> <span dangerouslySetInnerHTML={{ __html: li.replace('5GB Iniciales Totalmente Gratis', '5GB Iniciales <span style="color:var(--accent)">Totalmente Gratis</span>') }} /></li>
               ))}
             </ul>
+            <div className="mt-6">
+               <Link href="#pricing">
+                 <span className="text-xs font-bold underline cursor-pointer" style={{ color: 'var(--fg-muted)' }}>Ver precios de expansión por GB</span>
+               </Link>
+            </div>
           </motion.div>
 
           <motion.div 
